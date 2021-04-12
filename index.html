@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html>
-<body>
+<body style="background-color: rgb(80, 80, 80);">
+
 <div id="container">
-  <img ondragstart="return false" id="drag-img" src="assets/clementvalla.jpg" />
+  <img ondragstart="return false" id="drag-img" src="assets/Locations.jpg" />
 </div>
-<input type="button" id="zoomout" class="button" value="Zoom out">
-<input type="button" id="zoomin" class="button" value="Zoom in">
+<input type="button" id="zoomout" class="button" value="-">
+<input type="button" id="zoomin" class="button" value="+">
+
+<button class="button" onclick="document.getElementById('drag-img').src='assets/Blur.jpg'">Sensitive Sites</button>
+<button class="button" onclick="document.getElementById('drag-img').src='assets/NoBlur.jpg'">Reveal</button>
+<button class="button" onclick="document.getElementById('drag-img').src='assets/Locations.jpg'">Data Set</button>
+
 </body>
 </html>
 <script>
@@ -25,11 +31,13 @@ function zoom(zoomincrement) {
 }
 
 document.getElementById('zoomout').addEventListener('click', function() {
-  zoom(0.5);
+  zoom(0.75);
 });
 document.getElementById('zoomin').addEventListener('click', function() {
-  zoom(1.5);
+  zoom(1.25);
 });
+
+
 
 function start_drag() {
   img_ele = this;
@@ -63,19 +71,32 @@ document.getElementById('container').addEventListener('mouseup', stop_drag);
 #drag-img {
   cursor: move;
   position: relative;
-  width: 500px;
+  width: 750px;
   height: 500px;
 }
 
 #container {
   overflow: hidden;
-  background: red;
-  height: 500px;
-  width: 1500px;
+  background: rgb(80, 80, 80);
+  height: 750px;
+  width: auto;
+
 }
 
 .button {
+  font-family: "Courier";
+  color: rgb(42, 244, 143);
   width: 200px;
   height: 50px;
+  padding: 15px 15px;
+  border-radius: 4px;
+  transition-duration: 0.2s;
+  background-color: gray;
 }
+
+.button:hover {
+  background-color: rgb(42, 244, 143); /* Green */
+  color: white;
+}
+
 </style>
